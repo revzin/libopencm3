@@ -393,6 +393,10 @@ LGPL License Terms @ref lgpl_license
 /* TMEIE: Transmit mailbox empty interrupt enable */
 #define CAN_IER_TMEIE			(1 << 0)
 
+/* IER: enables all CAN interrupts (not touching reserved bits) */
+#define CAN_IER_ENABLE_ALL(can_base) (CAN_IER(can_base) |= \
+										0x3F | (0xF >> 8) | (0x7 >> 15))
+
 /* --- CAN_ESR values ------------------------------------------------------ */
 
 /* REC[7:0]: Receive error counter */
