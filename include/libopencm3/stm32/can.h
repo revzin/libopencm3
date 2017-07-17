@@ -401,6 +401,9 @@ LGPL License Terms @ref lgpl_license
 /* TEC[7:0]: Least significant byte of the 9-bit transmit error counter */
 #define CAN_ESR_TEC_MASK		(0xF << 16)
 
+#define CAN_ESR_TEC_SHIFT 16
+#define CAN_ESR_REC_SHIFT 24
+
 /* 15:7 Reserved, forced by hardware to 0 */
 
 /* LEC[2:0]: Last error code */
@@ -413,6 +416,7 @@ LGPL License Terms @ref lgpl_license
 #define CAN_ESR_LEC_CRC_ERROR		(0x6 << 4)
 #define CAN_ESR_LEC_SOFT_ERROR		(0x7 << 4)
 #define CAN_ESR_LEC_MASK		(0x7 << 4)
+#define CAN_ESR_LEC_SHIFT 4
 
 /* 3 Reserved, forced by hardware to 0 */
 
@@ -424,6 +428,13 @@ LGPL License Terms @ref lgpl_license
 
 /* EWGF: Error warning flag */
 #define CAN_ESR_EWGF			(1 << 0)
+
+#define CAN_TEC_VALUE(can_base)	((CAN_ESR(can_base) & CAN_ESR_TEC_MASK) >> \
+													CAN_ESR_TEC_SHIFT);
+#define CAN_REC_VALUE(can_base)	((CAN_ESR(can_base) & CAN_ESR_REC_MASK) >> \
+													CAN_ESR_REC_SHIFT);
+#define CAN_LEC_VALUE(can_base)	((CAN_ESR(can_base) & CAN_ESR_LEC_MASK) >> \
+													CAN_ESR_LEC_SHIFT);
 
 /* --- CAN_BTR values ------------------------------------------------------ */
 
