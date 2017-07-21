@@ -395,7 +395,7 @@ LGPL License Terms @ref lgpl_license
 
 /* IER: enables all CAN interrupts (not touching reserved bits) */
 #define CAN_IER_ENABLE_ALL(can_base) (CAN_IER(can_base) |= \
-										0x3F | (0xF >> 8) | (0x7 >> 15))
+										0x3F | (0xF << 8) | (0x7 << 15))
 
 /* --- CAN_ESR values ------------------------------------------------------ */
 
