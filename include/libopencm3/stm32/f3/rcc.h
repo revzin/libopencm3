@@ -505,6 +505,7 @@ enum rcc_periph_clken {
 	RCC_I2C2	= _REG_BIT(0x1C, 22),/*0178*/
 	RCC_USB		= _REG_BIT(0x1C, 23),/*0178*/
 	RCC_CAN		= _REG_BIT(0x1C, 25),/*0178*/
+	RCC_CAN1	= _REG_BIT(0x1C, 25),/*0178*/
 	RCC_DAC2	= _REG_BIT(0x1C, 26),
 	RCC_PWR		= _REG_BIT(0x1C, 28),/*0178*/
 	RCC_DAC1	= _REG_BIT(0x1C, 29),
@@ -552,6 +553,7 @@ enum rcc_periph_rst {
 	RST_I2C2	= _REG_BIT(0x10, 22),/*0178*/
 	RST_USB		= _REG_BIT(0x10, 23),/*0178*/
 	RST_CAN		= _REG_BIT(0x10, 25),/*0178*/
+	RST_CAN1	= _REG_BIT(0x10, 25),/*0178*/
 	RST_DAC2	= _REG_BIT(0x10, 26),
 	RST_PWR		= _REG_BIT(0x10, 28),/*0178*/
 	RST_DAC1	= _REG_BIT(0x10, 29),
@@ -594,8 +596,6 @@ void rcc_osc_on(enum rcc_osc osc);
 void rcc_osc_off(enum rcc_osc osc);
 void rcc_css_enable(void);
 void rcc_css_disable(void);
-void rcc_osc_bypass_enable(enum rcc_osc osc);
-void rcc_osc_bypass_disable(enum rcc_osc osc);
 void rcc_set_sysclk_source(uint32_t clk);
 void rcc_set_pll_source(uint32_t pllsrc);
 void rcc_set_ppre2(uint32_t ppre2);

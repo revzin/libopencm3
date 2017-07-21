@@ -27,15 +27,22 @@ broken, and are awaiting code fixes, or are long running performance tests
 
 ## Running the tests
 Below is an example of running the full suite of tests from the command line.
-The argument specifies the serial number to look for in the usb gadget.
+The argument specifies the serial number to look for in the usb gadget, if
+you have more than one.  No argument will the tests against all
+gadget-zero's found.
 ```
-$ python test_gadget0.py stm32f072disco
+$ python test_gadget0.py
 Running tests for DUT:  stm32f072disco
 .........ss................
 ----------------------------------------------------------------------
 Ran 27 tests in 0.388s
 
 OK (skipped=2)
+```
+
+To be even more brutal, run this in a shell loop.
+```
+$ while true; do python test_gadget0.py stm32f072disco; done
 ```
 
 You can also run individual tests, or individual sets of tests, see the [unittest documentation](https://docs.python.org/3/library/unittest.html) for more information.

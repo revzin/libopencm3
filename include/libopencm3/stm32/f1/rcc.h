@@ -364,8 +364,8 @@
 @ingroup STM32F1xx_rcc_defines
 
 @{*/
-#define RCC_APB2ENR_TIM17EN			(1 << 17)
-#define RCC_APB2ENR_TIM16EN			(1 << 16)
+#define RCC_APB2ENR_TIM17EN			(1 << 18)
+#define RCC_APB2ENR_TIM16EN			(1 << 17)
 #define RCC_APB2ENR_TIM15EN			(1 << 16)
 #define RCC_APB2ENR_ADC3EN			(1 << 15) /* (XX) */
 #define RCC_APB2ENR_USART1EN			(1 << 14)
@@ -691,8 +691,6 @@ void rcc_osc_on(enum rcc_osc osc);
 void rcc_osc_off(enum rcc_osc osc);
 void rcc_css_enable(void);
 void rcc_css_disable(void);
-void rcc_osc_bypass_enable(enum rcc_osc osc);
-void rcc_osc_bypass_disable(enum rcc_osc osc);
 void rcc_set_sysclk_source(uint32_t clk);
 void rcc_set_pll_multiplication_factor(uint32_t mul);
 void rcc_set_pll2_multiplication_factor(uint32_t mul);

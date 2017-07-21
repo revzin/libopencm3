@@ -1,25 +1,17 @@
 /** @defgroup flash_defines FLASH Defines
  *
- * @ingroup STM32L1xx_defines
+ * @brief <b>Defined Constants and Types for the STM32L0xx Flash memory</b>
  *
- * @brief Defined Constants and Types for the STM32L1xx FLASH Memory
+ * @ingroup STM32L0xx_defines
  *
  * @version 1.0.0
  *
- * @author @htmlonly &copy; @endhtmlonly 2012
- * Karl Palsson <karlp@tweak.net.au>
- *
- * @date 14 January 2014
- *
  * LGPL License Terms @ref lgpl_license
  */
-
 /*
  * This file is part of the libopencm3 project.
  *
- * Copyright (C) 2010 Thomas Otto <tommi@viadmin.org>
- * Copyright (C) 2010 Mark Butler <mbutler@physics.otago.ac.nz>
- * Copyright (C) 2012 Karl Palsson <karlp@tweak.net.au>
+ * Copyright (C) 2017 Karl Palsson <karlp@tweak.net.au>
  *
  * This library is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -35,11 +27,6 @@
  * along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
- * All extracted from PM0062 rev2, L15xx and L16xx Flash/EEPROM programming
- * manual.
- */
-
 #ifndef LIBOPENCM3_FLASH_H
 #define LIBOPENCM3_FLASH_H
 /**@{*/
@@ -47,20 +34,27 @@
 #include <libopencm3/stm32/common/flash_common_l01.h>
 
 /* --- FLASH registers ----------------------------------------------------- */
-#define FLASH_WRPR3			MMIO32(FLASH_MEM_INTERFACE_BASE + 0x84)
+/* L0 has some alternative names for the same registers */
+#define FLASH_OPTR			FLASH_OBR
+#define FLASH_WRPROT1			FLASH_WRPR1
+#define FLASH_WRPROT2			FLASH_WRPR2
 
 /* --- FLASH_ACR values ---------------------------------------------------- */
-#define FLASH_ACR_ACC64			(1 << 2)
+#define FLASH_ACR_PRE_READ		(1 << 6)
+#define FLASH_ACR_DISAB_BUF		(1 << 5)
+
+/* --- FLASH_PECR values ---------------------------------------------------- */
+#define FLASH_PECR_NZDISABLE		(1 << 23)
 
 /* --- FLASH_SR values ----------------------------------------------------- */
-#define FLASH_SR_OPTVERRUSR		(1 << 12)
+#define FLASH_SR_RDERR			(1 << 13)
+#define FLASH_SR_NOTZEROERR		(1 << 16)
+#define FLASH_SR_FWWERR			(1 << 17)
 
-/* --- Function prototypes ------------------------------------------------- */
+/* --- FLASH_OPTR values ----------------------------------------------------- */
+#define FLASH_OPTR_NBOOT1		(1 << 31)
 
 BEGIN_DECLS
-
-void flash_64bit_enable(void);
-void flash_64bit_disable(void);
 
 END_DECLS
 /**@}*/
